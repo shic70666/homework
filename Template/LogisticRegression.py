@@ -16,8 +16,44 @@ from matplotlib import pyplot as plt
 #!------------------------------------------------------------------------------
 #!                                     CLASSES
 #!------------------------------------------------------------------------------
+class Model():
 
+    def __init__(self):
+        self.kernel = LogisticRegression()
 
+    def fit(self, X, y):
+        self.X_train = X
+        self.y_train = y
+        self.kernel.fit(X, y)
+
+    def predict(self, X):
+        self.X_test = X
+        self.Y_test = self.kernel.predict(X)
+        return self.Y_test
+
+    def plt_(self, X, y_true):
+        #* post-processing
+        # Plot the decision boundary. For that, we will assign a color to each
+        # point in the mesh [x_min, x_max]x[y_min, y_max].
+        x_min, x_max = X[:, 0].min() - 0.5, X[:, 0].max() + 0.5
+        y_min, y_max = X[:, 1].min() - 0.5, X[:, 1].max() + 0.5
+        h = 0.02  # step size in the mesh
+        xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+        Z = self.kernel.predict(np.c_[xx.ravel(), yy.ravel()])
+
+        # Put the result into a color plot
+        Z = Z.reshape(xx.shape)
+        plt.figure(1, figsize=(4, 3))
+        plt.pcolormesh(xx, yy, Z, label="Decision boundary")
+
+        # Plot also the training points
+        plt.scatter(X[:, 0], X[:, 1], c=y_true, edgecolors="k",)
+        plt.xlabel("Feature 1: Sepal length")
+        plt.ylabel("Feature 2: Sepal width")
+        plt.xlim(xx.min(), xx.max())
+        plt.ylim(yy.min(), yy.max())
+        plt.legend()
+        plt.show()
 
 
 #!------------------------------------------------------------------------------
@@ -38,44 +74,21 @@ def main(num_of_classess):
 
     ## Step 2: train the model
     #* training the model
-    logreg = LogisticRegression()
+    logreg = Model()
     logreg.fit(X_train, Y_train)
     
     #* post-processing
-    # Plot the decision boundary. For that, we will assign a color to each
-    # point in the mesh [x_min, x_max]x[y_min, y_max].
-    x_min, x_max = X_train[:, 0].min() - 0.5, X_train[:, 0].max() + 0.5
-    y_min, y_max = X_train[:, 1].min() - 0.5, X_train[:, 1].max() + 0.5
-    h = 0.02  # step size in the mesh
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
-    Z = logreg.predict(np.c_[xx.ravel(), yy.ravel()])
-
-    # Put the result into a color plot
-    Z = Z.reshape(xx.shape)
-    plt.figure(1, figsize=(4, 3))
-    plt.pcolormesh(xx, yy, Z, label="Decision boundary")
-
-    # Plot also the training points
-    plt.scatter(X_train[:, 0], X_train[:, 1], c=Y_train, edgecolors="k", label="Training points")
-    plt.xlabel("Feature 1: Sepal length")
-    plt.ylabel("Feature 2: Sepal width")
-    plt.xlim(xx.min(), xx.max())
-    plt.ylim(yy.min(), yy.max())
-    plt.xticks(())
-    plt.yticks(())
-    plt.legend()
-    plt.show()
-    
+    logreg.plt_(X_train, Y_train)
 
     ## Step 3: use the model
-    Y_predict = logreg.predict(X_test)
+    logreg.plt_(X_test, Y_test)
 
     #* post-processing
-    plt.figure(1, figsize=(4, 3))
-    plt.scatter(X_test[:, 0], X_test[:, 1], marker="+", c=Y_test, s=50, cmap=plt.cm.Paired, label="True label")
-    plt.scatter(X_test[:, 0], X_test[:, 1], marker="x", c=Y_predict, s=50, cmap=plt.cm.Paired, label="Predicted label")
-    plt.legend()
-    plt.show()
+    # plt.figure(1, figsize=(4, 3))
+    # plt.scatter(X_test[:, 0], X_test[:, 1], marker="+", c=Y_test, s=50, cmap=plt.cm.Paired, label="True label")
+    # plt.scatter(X_test[:, 0], X_test[:, 1], marker="x", c=Y_predict, s=50, cmap=plt.cm.Paired, label="Predicted label")
+    # plt.legend()
+    # plt.show()
 
 
 #!------------------------------------------------------------------------------
