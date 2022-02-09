@@ -12,7 +12,7 @@ plt.style.use(_)
 output_dir="Figures"
 output_dir = Path(output_dir)
 
-df = pd.read_csv("/Users/shic/Codes/personal/Homework/Server/Test_figure_data.csv", header = None)
+df = pd.read_csv("/personal/homework/Server/Test_figure_data.csv", header = None)
 df.columns = ["Time","Acceleration","Strain","Velocity"] 
 
 #%% 截取前1000条数据，画Time-Acceleration图，所有图形必须有 title;legend;Xlable;Ylable
