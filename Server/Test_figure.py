@@ -1,9 +1,16 @@
+''' Test figure plot on the server
+'''
 #%%
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import figureHB as hb
-plt.style.use("figureplot.mplstyle")
+from pathlib import Path
+_ = Path("../src/figureplot.mplstyle").absolute()
+plt.style.use(_)
+
+output_dir="Figures"
+output_dir = Path(output_dir)
 
 df = pd.read_csv("/Users/shic/Codes/personal/Homework/Server/Test_figure_data.csv", header = None)
 df.columns = ["Time","Acceleration","Strain","Velocity"] 
@@ -25,6 +32,7 @@ plt.grid(True)
 plt.legend(loc="upper right")
 
 plt.show()
+plt.savefig(output_dir.joinpath("Time-Acceleration"))
 
 #%%  截取前1000条数据，在一个figure里画 Time-Acceleration 和 Time-Strain的图
 plt.figure(figsize=(16,12))
@@ -49,7 +57,7 @@ plt.grid(True)
 plt.legend(loc="upper right")
 
 plt.show()
-
+plt.savefig(output_dir.joinpath("Time-Acceleration $\&$ Time-Strain"))
 # #%%  
 # plt.figure(figsize=(16,12))
 # # plt.subplot(211)
@@ -82,6 +90,6 @@ plt.grid(True)
 plt.legend(loc="upper right")
 
 plt.show()
-
+plt.savefig(output_dir.joinpath("Time-Acceleration $\&$ Time-Velocity"))
 
 # %%
