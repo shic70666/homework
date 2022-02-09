@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("/Users/shic/Codes/personal/Homework/Test_figure_data.xlsx", header = None)
+df = pd.read_csv("/Users/shic/Codes/personal/Homework/Test_figure_data.csv", header = None)
 df.columns = ["Time","Acceleration","Strain","Velocity"] 
 
 #%% 截取前1000条数据，画Time-Acceleration图，所有图形必须有 title;legend;Xlable;Ylable
