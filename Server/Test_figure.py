@@ -32,7 +32,7 @@ plt.grid(True)
 plt.legend(loc="upper right")
 
 plt.show()
-plt.savefig(output_dir.joinpath("Time-Acceleration"))
+plt.savefig(output_dir.joinpath("Time-Acceleration.svg"))
 
 #%%  截取前1000条数据，在一个figure里画 Time-Acceleration 和 Time-Strain的图
 plt.figure(figsize=(16,12))
@@ -57,7 +57,7 @@ plt.grid(True)
 plt.legend(loc="upper right")
 
 plt.show()
-plt.savefig(output_dir.joinpath("Time-Acceleration $\&$ Time-Strain"))
+plt.savefig(output_dir.joinpath("Time-Acceleration $\&$ Time-Strain.svg"))
 # #%%  
 # plt.figure(figsize=(16,12))
 # # plt.subplot(211)
@@ -90,6 +90,6 @@ plt.grid(True)
 plt.legend(loc="upper right")
 
 plt.show()
-plt.savefig(output_dir.joinpath("Time-Acceleration $\&$ Time-Velocity"))
+plt.savefig(output_dir.joinpath("Time-Acceleration $\&$ Time-Velocity.svg"))
 
 # %%
