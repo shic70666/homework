@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
 df = pd.read_csv("/Users/shic/Codes/personal/Homework/Test_figure_data.csv", header = None)
 df.columns = ["Time","Acceleration","Strain","Velocity"] 
 
