@@ -3,10 +3,10 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv("/Users/shic/OneDrive/Chen/S2_22_2170-88.csv", header = None)
+df = pd.read_csv("/Users/shic/Codes/personal/Homework/Test_figure_data.xlsx", header = None)
 df.columns = ["Time","Acceleration","Strain","Velocity"] 
 
-#%%
+#%% 截取前1000条数据，画Time-Acceleration图，所有图形必须有 title;legend;Xlable;Ylable
 a_axis = df[:90]["Time"]
 b_axis = df[:90]["Acceleration"]
 c_axis = df[:90]["Strain"]
@@ -24,7 +24,7 @@ plt.legend()
 
 plt.show()
 
-#%%
+#%%  截取前1000条数据，在一个figure里画 Time-Acceleration 和 Time-Strain的图
 plt.figure(figsize=(16,12))
 plt.subplot(211)
 plt.title("Time-Acceleration")
@@ -49,7 +49,7 @@ plt.legend(loc="upper right")
 
 plt.show()
 
-#%%
+#%%  
 # plt.figure(figsize=(16,12))
 # plt.subplot(211)
 # The above 2 lines equals to:
@@ -66,7 +66,7 @@ for axis in axes:
     axis.set_xlabel("Time (s)")
     axis.set_title("common title")
 
-#%%
+#%% 截取前1000条数据，在一个figure，一个graph里画 Time-Acceleration(红，实线) 和 Time-Velocity(蓝，虚线)的图
 
 plt.figure(figsize=(16,6))
 
