@@ -12,7 +12,7 @@ plt.style.use(_)
 output_dir="Figures"
 output_dir = Path(output_dir)
 
-df = pd.read_csv("/personal/homework/Server/Test_figure_data.csv", header = None)
+df = pd.read_csv("../Server/Test_figure_data.csv", header = None)
 df.columns = ["Time","Acceleration","Strain","Velocity"] 
 
 #%% 截取前1000条数据，画Time-Acceleration图，所有图形必须有 title;legend;Xlable;Ylable
@@ -31,7 +31,7 @@ plt.ylabel("Acceleration $(m^2/s)$")
 plt.grid(True)
 plt.legend(loc="upper right")
 
-plt.show()
+# plt.show()
 plt.savefig(output_dir.joinpath("Time-Acceleration.svg"))
 
 #%%  截取前1000条数据，在一个figure里画 Time-Acceleration 和 Time-Strain的图
@@ -56,7 +56,7 @@ plt.ylabel("Strain $(\mu m/m)$")
 plt.grid(True)
 plt.legend(loc="upper right")
 
-plt.show()
+# plt.show()
 plt.savefig(output_dir.joinpath("Time-Acceleration $\&$ Time-Strain.svg"))
 # #%%  
 # plt.figure(figsize=(16,12))
@@ -89,7 +89,7 @@ plt.ylabel("Acceleration $(m^2/s)$")
 plt.grid(True)
 plt.legend(loc="upper right")
 
-plt.show()
+# plt.show()
 plt.savefig(output_dir.joinpath("Time-Acceleration $\&$ Time-Velocity.svg"))
 
 # %%
