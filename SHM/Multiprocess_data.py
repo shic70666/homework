@@ -83,7 +83,7 @@ def run_ChenShi(data_path):
         data_case.append( data_all[0,0][colum_name] )
 
     case_num = data_path[-6]
-    ns = 128 # length of frames
+    ns = 256 # length of frames
     nss = 16 # width of feature matrix
 
     each_case = pd.DataFrame()
