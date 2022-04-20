@@ -138,3 +138,5 @@ dmypy.json
 *.jpg
 /CNN/mnist
 CNN/cnn.pkl
+data/MNIST
+*.mat
